@@ -12,3 +12,12 @@ def test_health_check() -> None:
     assert response.status_code == 200, response.text
     data = response.json()
     assert data["status"] == "ok"
+
+
+def test_echo_user() -> None:
+    response = client.get(
+        "/user/jojo",
+    )
+    assert response.status_code == 200, response.text
+    data = response.json()
+    assert data["name"] == "jojo"
